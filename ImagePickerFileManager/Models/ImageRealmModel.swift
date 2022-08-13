@@ -8,6 +8,6 @@
 import Foundation
 import RealmSwift
 
-class ImagePathRealm: Object {
+class ImageRealmModel: Object {
     @objc dynamic var imagePath: String? = ""
 }

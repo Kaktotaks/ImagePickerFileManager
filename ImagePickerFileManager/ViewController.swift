@@ -11,12 +11,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     @IBOutlet weak var tableView: UITableView!
     var photosList = Photos.photosList
     var imagePicker: UIImagePickerController!
-    var photos: [UIImage] = []
+//    var photos: [UIImage] = []
+    var imageName = 1
+    
+    let doradoImage = UIImage(named: "dorado")
+    
+    let manager = LocalFileManager.instance
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let image = doradoImage else { return }
+            
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "camera"), style: .plain, target: self, action: #selector(takePhoto))
+        
+//        manager.saveImage(image: image , name: "dorado")
+        
+        
     }
     
     @objc func takePhoto(_ sender: UIButton) {
@@ -28,58 +40,62 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         }
     }
     
-    var image = UIImage()
-    
     // Add the photo to the tableView
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
         print("No image found")
         return
     }
-    
-        self.image = saveImage(image: image)
-        photosList.append(Photo(photoImage: self.image))
         
-
+//        self.image = image
+//        self.image = saveImage(image: image)
+        do {
+            manager.saveImage(image: image , name: "\(imageName)")
+            photosList.append(Photo(photoImage: LocalFileManager.instance.getImage(name: "\(imageName)")))
+        } catch {
+            print("Error while saveng an image after ImagePicker")
+        }
+        
+        imageName += 1
         tableView.reloadData()
         self.dismiss(animated: true, completion: nil)
         
     }
     
-    func saveImage(image: UIImage) -> UIImage {
-    let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+//    func saveImage(image: UIImage) -> UIImage {
+//    let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+//
+//        let fileURL = documentsDirectory?.appendingPathComponent("Photo \(IndexSet())")
+//        let data = image.jpegData(compressionQuality: 1) ?? image.pngData()
+//
+//
+//        do {
+//            try data!.write(to: fileURL!)
+//        } catch let error {
+//            print("error saving file with error", error)
+//        }
+//
+//        return image
+//    }
 
-        let fileURL = documentsDirectory?.appendingPathComponent("Photo \(IndexSet())")
-        let data = image.jpegData(compressionQuality: 1) ?? image.pngData()
 
 
-        do {
-            try data!.write(to: fileURL!)
-        } catch let error {
-            print("error saving file with error", error)
-        }
-        
-        return image
-    }
-
-
-
-    func loadImageFromDiskWith(fileName: String) -> UIImage? {
-
-      let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
-
-        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
-        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
-
-        if let dirPath = paths.first {
-            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
-            let image = UIImage(contentsOfFile: imageUrl.path)
-            return image
-
-        }
-
-        return nil
-    }
+//    func loadImageFromDiskWith(fileName: String) -> UIImage? {
+//
+//      let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
+//
+//        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+//        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+//
+//        if let dirPath = paths.first {
+//            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
+//            let image = UIImage(contentsOfFile: imageUrl.path)
+//            return image
+//
+//        }
+//
+//        return nil
+//    }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -91,7 +107,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as? CustomTableViewCell else { return UITableViewCell() }
         
         cell.configurePhoto(photosList[indexPath.row])
-        cell.photoImageView.image = loadImageFromDiskWith(fileName: "Photo \(IndexSet())")
+//        cell.photoImageView.image = loadImageFromDiskWith(fileName: "Photo \(IndexSet())")
         return cell
     }
     

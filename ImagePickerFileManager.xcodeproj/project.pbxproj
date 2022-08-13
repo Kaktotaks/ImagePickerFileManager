@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4B44D6328A6B2C7003B41A9 /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B44D6228A6B2C7003B41A9 /* LocalFileManager.swift */; };
 		E4D53BD128918D4C00A58159 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D53BD028918D4C00A58159 /* AppDelegate.swift */; };
 		E4D53BD328918D4C00A58159 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D53BD228918D4C00A58159 /* SceneDelegate.swift */; };
 		E4D53BD528918D4C00A58159 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D53BD428918D4C00A58159 /* ViewController.swift */; };
@@ -19,10 +20,11 @@
 		E4D53C4F28A68D7A00A58159 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D53C4E28A68D7A00A58159 /* RealmManager.swift */; };
 		E4D53C5228A68E0D00A58159 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E4D53C5128A68E0D00A58159 /* Realm */; };
 		E4D53C5428A68E0D00A58159 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E4D53C5328A68E0D00A58159 /* RealmSwift */; };
-		E4D53C5628A68FC600A58159 /* ImagePathRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D53C5528A68FC600A58159 /* ImagePathRealm.swift */; };
+		E4D53C5628A68FC600A58159 /* ImageRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D53C5528A68FC600A58159 /* ImageRealmModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E4B44D6228A6B2C7003B41A9 /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		E4D53BCD28918D4C00A58159 /* ImagePickerFileManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePickerFileManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D53BD028918D4C00A58159 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4D53BD228918D4C00A58159 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +37,7 @@
 		E4D53BE928918EC500A58159 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		E4D53BEC289190DF00A58159 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		E4D53C4E28A68D7A00A58159 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
-		E4D53C5528A68FC600A58159 /* ImagePathRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePathRealm.swift; sourceTree = "<group>"; };
+		E4D53C5528A68FC600A58159 /* ImageRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRealmModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E4B44D5E28A6B1D8003B41A9 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				E4D53BE828918EC500A58159 /* CustomTableViewCell.swift */,
+				E4D53BE928918EC500A58159 /* CustomTableViewCell.xib */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		E4B44D6028A6B289003B41A9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E4D53BEC289190DF00A58159 /* Model.swift */,
+				E4D53C5528A68FC600A58159 /* ImageRealmModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E4B44D6128A6B28F003B41A9 /* Menegers */ = {
+			isa = PBXGroup;
+			children = (
+				E4D53C4E28A68D7A00A58159 /* RealmManager.swift */,
+				E4B44D6228A6B2C7003B41A9 /* LocalFileManager.swift */,
+			);
+			path = Menegers;
+			sourceTree = "<group>";
+		};
 		E4D53BC428918D4C00A58159 = {
 			isa = PBXGroup;
 			children = (
@@ -70,18 +99,16 @@
 		E4D53BCF28918D4C00A58159 /* ImagePickerFileManager */ = {
 			isa = PBXGroup;
 			children = (
-				E4D53C4E28A68D7A00A58159 /* RealmManager.swift */,
-				E4D53BEC289190DF00A58159 /* Model.swift */,
+				E4B44D5E28A6B1D8003B41A9 /* CustomCells */,
+				E4B44D6028A6B289003B41A9 /* Models */,
+				E4B44D6128A6B28F003B41A9 /* Menegers */,
 				E4D53BD028918D4C00A58159 /* AppDelegate.swift */,
 				E4D53BD228918D4C00A58159 /* SceneDelegate.swift */,
 				E4D53BD428918D4C00A58159 /* ViewController.swift */,
-				E4D53BE828918EC500A58159 /* CustomTableViewCell.swift */,
-				E4D53BE928918EC500A58159 /* CustomTableViewCell.xib */,
 				E4D53BD628918D4C00A58159 /* Main.storyboard */,
 				E4D53BD928918D4D00A58159 /* Assets.xcassets */,
 				E4D53BDB28918D4D00A58159 /* LaunchScreen.storyboard */,
 				E4D53BDE28918D4D00A58159 /* Info.plist */,
-				E4D53C5528A68FC600A58159 /* ImagePathRealm.swift */,
 			);
 			path = ImagePickerFileManager;
 			sourceTree = "<group>";
@@ -165,13 +192,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4D53C5628A68FC600A58159 /* ImagePathRealm.swift in Sources */,
+				E4D53C5628A68FC600A58159 /* ImageRealmModel.swift in Sources */,
 				E4D53BED289190DF00A58159 /* Model.swift in Sources */,
 				E4D53BD528918D4C00A58159 /* ViewController.swift in Sources */,
 				E4D53BD128918D4C00A58159 /* AppDelegate.swift in Sources */,
 				E4D53BEA28918EC500A58159 /* CustomTableViewCell.swift in Sources */,
 				E4D53BD328918D4C00A58159 /* SceneDelegate.swift in Sources */,
 				E4D53C4F28A68D7A00A58159 /* RealmManager.swift in Sources */,
+				E4B44D6328A6B2C7003B41A9 /* LocalFileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
