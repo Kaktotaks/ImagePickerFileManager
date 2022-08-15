@@ -37,6 +37,7 @@ class LocalFileManager {
         guard
             let path = getPathForImage(name: name)?.path,
                 FileManager.default.fileExists(atPath: path)
+                
         else {
             print("Error getting path to an Image.")
             return nil

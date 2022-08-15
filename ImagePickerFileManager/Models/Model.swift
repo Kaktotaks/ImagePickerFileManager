@@ -9,10 +9,11 @@ import Foundation
 import UIKit
 
 class Photos {
-    static var photosList: [Photo] = [Photo(photoImage: UIImage(named: "dorado"))]
+    static var photosList: [Photo] = [Photo(photoImage: UIImage(named: "dorado"), photoTime: Date.getCurrentUADate(.now)())]
 }
 
 
 struct Photo {
     var photoImage: UIImage?
+    var photoTime: String?
 }

@@ -9,6 +9,7 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var timeOfShotingLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,6 +18,7 @@ class CustomTableViewCell: UITableViewCell {
     
    func configurePhoto(_ photo: Photo) {
        photoImageView.image = photo.photoImage
+       timeOfShotingLabel.text = photo.photoTime
     }
     
 }

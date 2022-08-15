@@ -10,26 +10,50 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="CustomTableViewCell" selectionStyle="default" indentationWidth="10" rowHeight="243" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="ImagePickerFileManager" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="450" height="243"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="CustomTableViewCell" selectionStyle="default" indentationWidth="10" rowHeight="300" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="ImagePickerFileManager" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="450" height="243"/>
+                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVm-Mr-Y1f" userLabel="MyView">
-                        <rect key="frame" x="36" y="27" width="378" height="189"/>
+                        <rect key="frame" x="36" y="27" width="378" height="246"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y00-Dq-bvj">
-                                <rect key="frame" x="0.0" y="0.0" width="378" height="189"/>
+                                <rect key="frame" x="0.0" y="0.0" width="378" height="206"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9V-Lk-poY">
+                                <rect key="frame" x="0.0" y="206" width="378" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9a6-vb-OmX">
+                                        <rect key="frame" x="10" y="8" width="358" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.62684129411564615" green="0.77240395952721075" blue="0.90087341655918374" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="9a6-vb-OmX" firstAttribute="leading" secondItem="W9V-Lk-poY" secondAttribute="leading" constant="10" id="EJv-LV-oFz"/>
+                                    <constraint firstItem="9a6-vb-OmX" firstAttribute="centerY" secondItem="W9V-Lk-poY" secondAttribute="centerY" id="HTl-Xt-ER8"/>
+                                    <constraint firstAttribute="bottom" secondItem="9a6-vb-OmX" secondAttribute="bottom" constant="8" id="IC1-XP-Zmd"/>
+                                    <constraint firstAttribute="trailing" secondItem="9a6-vb-OmX" secondAttribute="trailing" constant="10" id="Mrh-m0-hAE"/>
+                                    <constraint firstItem="9a6-vb-OmX" firstAttribute="top" secondItem="W9V-Lk-poY" secondAttribute="top" constant="8" id="N4H-Zo-ZUH"/>
+                                    <constraint firstItem="9a6-vb-OmX" firstAttribute="centerX" secondItem="W9V-Lk-poY" secondAttribute="centerX" id="uke-eU-3Hl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="W9V-Lk-poY" secondAttribute="bottom" id="904-Yk-Z3C"/>
                             <constraint firstItem="y00-Dq-bvj" firstAttribute="leading" secondItem="EVm-Mr-Y1f" secondAttribute="leading" id="HQG-y4-PPf"/>
                             <constraint firstAttribute="trailing" secondItem="y00-Dq-bvj" secondAttribute="trailing" id="IVQ-ky-Jbq"/>
                             <constraint firstItem="y00-Dq-bvj" firstAttribute="top" secondItem="EVm-Mr-Y1f" secondAttribute="top" id="Wat-tH-kMH"/>
-                            <constraint firstAttribute="bottom" secondItem="y00-Dq-bvj" secondAttribute="bottom" id="wPm-f0-2r6"/>
+                            <constraint firstItem="W9V-Lk-poY" firstAttribute="leading" secondItem="EVm-Mr-Y1f" secondAttribute="leading" id="Xp9-KG-4N8"/>
+                            <constraint firstAttribute="trailing" secondItem="W9V-Lk-poY" secondAttribute="trailing" id="cBe-yT-RFx"/>
+                            <constraint firstItem="W9V-Lk-poY" firstAttribute="top" secondItem="y00-Dq-bvj" secondAttribute="bottom" id="w8i-GJ-SwQ"/>
+                            <constraint firstAttribute="bottom" secondItem="y00-Dq-bvj" secondAttribute="bottom" constant="40" id="wPm-f0-2r6"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -44,8 +68,9 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="photoImageView" destination="y00-Dq-bvj" id="Glr-ZI-8ab"/>
+                <outlet property="timeOfShotingLabel" destination="9a6-vb-OmX" id="6iN-nq-2z8"/>
             </connections>
-            <point key="canvasLocation" x="150.72463768115944" y="272.87946428571428"/>
+            <point key="canvasLocation" x="150.72463768115944" y="291.96428571428572"/>
         </tableViewCell>
     </objects>
     <resources>
