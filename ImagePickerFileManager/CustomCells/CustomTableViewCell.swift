@@ -21,4 +21,9 @@ class CustomTableViewCell: UITableViewCell {
        timeOfShotingLabel.text = photo.photoTime
     }
     
+    func configureCoreDataPhotos(with imagePath: UIImage, cdPhoto: CDPhoto) {
+        photoImageView.image = imagePath
+        timeOfShotingLabel.text = cdPhoto.time
+        }
+    
 }

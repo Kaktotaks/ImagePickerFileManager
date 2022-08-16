@@ -12,6 +12,7 @@
 		E4B44D9428AAA4C2003B41A9 /* CDPhoto+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B44D9228AAA4C2003B41A9 /* CDPhoto+CoreDataClass.swift */; };
 		E4B44D9528AAA4C2003B41A9 /* CDPhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B44D9328AAA4C2003B41A9 /* CDPhoto+CoreDataProperties.swift */; };
 		E4B44D9928AAB267003B41A9 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B44D9828AAB267003B41A9 /* DateExtensions.swift */; };
+		E4B44D9B28ABAB97003B41A9 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B44D9A28ABAB97003B41A9 /* CoreDataManager.swift */; };
 		E4D53BD128918D4C00A58159 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D53BD028918D4C00A58159 /* AppDelegate.swift */; };
 		E4D53BD328918D4C00A58159 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D53BD228918D4C00A58159 /* SceneDelegate.swift */; };
 		E4D53BD528918D4C00A58159 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D53BD428918D4C00A58159 /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 		E4B44D9228AAA4C2003B41A9 /* CDPhoto+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPhoto+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E4B44D9328AAA4C2003B41A9 /* CDPhoto+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPhoto+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E4B44D9828AAB267003B41A9 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		E4B44D9A28ABAB97003B41A9 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E4D53BCD28918D4C00A58159 /* ImagePickerFileManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePickerFileManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D53BD028918D4C00A58159 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4D53BD228918D4C00A58159 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				E4B44D6228A6B2C7003B41A9 /* LocalFileManager.swift */,
+				E4B44D9A28ABAB97003B41A9 /* CoreDataManager.swift */,
 			);
 			path = Menegers;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				E4D53BD328918D4C00A58159 /* SceneDelegate.swift in Sources */,
 				E4B44D6328A6B2C7003B41A9 /* LocalFileManager.swift in Sources */,
 				E4B44D9128AAA285003B41A9 /* ImagePickerFileManager.xcdatamodeld in Sources */,
+				E4B44D9B28ABAB97003B41A9 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
