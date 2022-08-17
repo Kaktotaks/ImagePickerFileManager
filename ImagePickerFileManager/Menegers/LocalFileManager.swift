@@ -35,23 +35,18 @@ class LocalFileManager {
     func getImage(name: String) -> UIImage? {
         
         guard
-            let path = getPathForImage(name: name)?.path,
-                FileManager.default.fileExists(atPath: path)
+                FileManager.default.fileExists(atPath: name)
                 
         else {
             print("Error getting path to an Image.")
             return nil
         }
         
-        return UIImage(contentsOfFile: path)
+        return UIImage(contentsOfFile: name)
         
     }
     
     func getPathForImage(name: String) -> URL? {
-        //        let directory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
-        //        let path = directory?.appendingPathComponent("\(name).jpeg")
-        //        print(directory)
-        //        print(path)
         
         guard
             let path = FileManager

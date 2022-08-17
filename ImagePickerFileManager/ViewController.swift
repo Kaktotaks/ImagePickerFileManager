@@ -11,7 +11,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     static let shared = ViewController()
     @IBOutlet weak var tableView: UITableView!
     var imagePicker: UIImagePickerController!
-    var imageName = 1
     var cdPhotos: [CDPhoto]?
     var photo: Photo? = nil
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -27,7 +26,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     }
     
     func fetchPhotos() {
-       // Fetch data from Core Data to displayin the table View
+        // Fetch data from Core Data to displayin the table View
         do {
             self.cdPhotos = try context.fetch(CDPhoto.fetchRequest())
             DispatchQueue.main.async {
@@ -38,7 +37,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             print("An error while fetching some data from Core Data")
         }
         
-   }
+    }
     
     @objc func takePhoto(_ sender: UIButton) {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -52,30 +51,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     // Add the photo to the tableView
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-        print("No image found")
-        return
-    }
+            print("No image found")
+            return
+        }
+        let imageName: UUID = .init()
         
-            manager.saveImage(
-                image: image,
-                name: "\(imageName)")
-            
-            // Create a photo object
-            let newPhoto = CDPhoto(context: self.context)
-            newPhoto.time = Date.getCurrentUADate(.now)()
-            newPhoto.path = LocalFileManager.instance.getPathForImage(name: "\(imageName)")?.description
-            
-            // Save the data
-            do {
-                try self.context.save()
-            } catch {
-                print("An error while saving context")
-            }
-            
-            // Re-fetch data
+        manager.saveImage(
+            image: image,
+            name: "\(imageName)")
+        
+        // Create a photo object
+        let newPhoto = CDPhoto(context: self.context)
+        newPhoto.time = Date.getCurrentUADate(.now)()
+        newPhoto.path = LocalFileManager.instance.getPathForImage(name: "\(imageName)")?.relativePath
+        
+        
+        // Save the data
+        do {
+            try self.context.save()
+        } catch {
+            print("An error while saving context")
+        }
+        
+        // Re-fetch data
         self.fetchPhotos()
-        
-        imageName += 1
         self.dismiss(animated: true, completion: nil)
     }
 }
@@ -93,7 +92,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             let photo = self.cdPhotos?[indexPath.row] else { return UITableViewCell() }
         cell.timeOfShotingLabel.text = photo.time
         cell.photoImageView.image = LocalFileManager.instance.getImage(name: (photo.path!))
-
+        
         return cell
     }
     

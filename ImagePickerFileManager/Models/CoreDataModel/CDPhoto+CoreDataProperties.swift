@@ -2,7 +2,7 @@
 //  CDPhoto+CoreDataProperties.swift
 //  ImagePickerFileManager
 //
-//  Created by Леонід Шевченко on 15.08.2022.
+//  Created by Леонід Шевченко on 17.08.2022.
 //
 //
 
