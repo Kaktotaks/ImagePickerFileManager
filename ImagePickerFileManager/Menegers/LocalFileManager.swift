@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+//protocol AddFileManagerProtocol {
+//    func saveImage(image: UIImage, name: String)
+//    func getImage(name: String) -> UIImage?
+//    func getPathForImage(name: String) -> URL?
+//}
+
 class LocalFileManager {
 
     static let instance = LocalFileManager()
@@ -30,6 +36,7 @@ class LocalFileManager {
         }
 
     }
+
     func getImage(name: String) -> UIImage? {
         guard
             let path = getPathForImage(name: name)?.path,
@@ -40,6 +47,7 @@ class LocalFileManager {
         }
         return UIImage(contentsOfFile: path)
     }
+
     func getPathForImage(name: String) -> URL? {
         guard
             let path = FileManager

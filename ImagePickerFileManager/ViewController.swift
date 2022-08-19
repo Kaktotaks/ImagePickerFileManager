@@ -18,13 +18,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "camera"), style: .plain, target: self, action: #selector(takePhoto))
+        setUpUI()
         fetchPhotos()
     }
 
-    func fetchPhotos() {
+    private func setUpUI() {
+        tableView.register(UINib(nibName: "CustomTableViewCell",
+                                 bundle: nil),
+                           forCellReuseIdentifier: "CustomTableViewCell")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "camera"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(takePhoto))
+    }
+
+    private func fetchPhotos() {
         // Fetch data from Core Data to displayin the table View
         do {
             self.cdPhotos = try context.fetch(CDPhoto.fetchRequest())
