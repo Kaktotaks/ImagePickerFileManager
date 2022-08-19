@@ -8,20 +8,19 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-    static let shared = ViewController()
+    
+    // MARK: - Variables
     @IBOutlet weak var tableView: UITableView!
-    var imagePicker: UIImagePickerController!
-    var cdPhotos: [CDPhoto]?
-    var photo: Photo? = nil
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    let manager = LocalFileManager.instance
+    private weak var imagePicker: UIImagePickerController!
+    private lazy var cdPhotos: [CDPhoto]? = nil
+    private lazy var fileManager = LocalFileManager.instance
+    private lazy var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "camera"), style: .plain, target: self, action: #selector(takePhoto))
-        
         fetchPhotos()
     }
     
@@ -36,7 +35,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         catch {
             print("An error while fetching some data from Core Data")
         }
-        
     }
     
     @objc func takePhoto(_ sender: UIButton) {
@@ -54,16 +52,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             print("No image found")
             return
         }
-        let imageName: UUID = .init()
+        lazy var imageName: UUID = .init()
         
-        manager.saveImage(
-            image: image,
-            name: "\(imageName)")
+        fileManager.saveImage(image: image, name: "\(imageName)")
         
         // Create a photo object
         let newPhoto = CDPhoto(context: self.context)
         newPhoto.time = Date.getCurrentUADate(.now)()
-        newPhoto.path = LocalFileManager.instance.getPathForImage(name: "\(imageName)")?.relativePath
+        newPhoto.imageName = imageName
         
         
         // Save the data
@@ -87,17 +83,36 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as? CustomTableViewCell else { return UITableViewCell() }
         
-        // MARK: - Configure CoreData entities to a cell entities
-        guard
-            let photo = self.cdPhotos?[indexPath.row] else { return UITableViewCell() }
-        cell.timeOfShotingLabel.text = photo.time
-        cell.photoImageView.image = LocalFileManager.instance.getImage(name: (photo.path!))
+        // MARK: Configure CoreData entities to a cell entities
+        guard let photo = self.cdPhotos?[indexPath.row] else {
+            return UITableViewCell()
+        }
         
+        guard let photoImageName = photo.imageName else {
+            return UITableViewCell()
+        }
+        
+        let imageName = fileManager.getImage(name: String("\(photoImageName)"))
+        cell.configureCoreDataPhotos(with: photo, image: imageName)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return  240
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .destructive, title: "Delete") { action, view, completionHandler in
+            let photoToRemove = self.cdPhotos![indexPath.row]
+            self.context.delete(photoToRemove)
+            do {
+                try self.context.save()
+                print("Successfuly deleted from CoreDataBase ")
+            } catch {
+                print("An error while saving context after deletion")
+            }
+            self.fetchPhotos()
+        }
+        return UISwipeActionsConfiguration(actions: [action])
+    }
 }
-

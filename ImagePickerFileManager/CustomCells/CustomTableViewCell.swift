@@ -14,16 +14,10 @@ class CustomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
     
-   func configurePhoto(_ photo: Photo) {
-       photoImageView.image = photo.photoImage
-       timeOfShotingLabel.text = photo.photoTime
-    }
-    
-    func configureCoreDataPhotos(with imagePath: UIImage, cdPhoto: CDPhoto) {
-        photoImageView.image = imagePath
-        timeOfShotingLabel.text = cdPhoto.time
+    func configureCoreDataPhotos(with cdPhoto: CDPhoto?, image: UIImage?) {
+        photoImageView.image = image
+        timeOfShotingLabel.text = cdPhoto?.time
         }
     
 }

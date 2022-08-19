@@ -21,7 +21,6 @@
 		E4D53BDD28918D4D00A58159 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D53BDB28918D4D00A58159 /* LaunchScreen.storyboard */; };
 		E4D53BEA28918EC500A58159 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D53BE828918EC500A58159 /* CustomTableViewCell.swift */; };
 		E4D53BEB28918EC500A58159 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D53BE928918EC500A58159 /* CustomTableViewCell.xib */; };
-		E4D53BED289190DF00A58159 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D53BEC289190DF00A58159 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +40,6 @@
 		E4D53BDE28918D4D00A58159 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4D53BE828918EC500A58159 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		E4D53BE928918EC500A58159 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
-		E4D53BEC289190DF00A58159 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				E4B44D9628AAA4D0003B41A9 /* CoreDataModel */,
-				E4D53BEC289190DF00A58159 /* Model.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -212,7 +209,6 @@
 			files = (
 				E4B44D9928AAB267003B41A9 /* DateExtensions.swift in Sources */,
 				E46D3A9A28AD0C2100CD4776 /* CDPhoto+CoreDataClass.swift in Sources */,
-				E4D53BED289190DF00A58159 /* Model.swift in Sources */,
 				E4D53BD528918D4C00A58159 /* ViewController.swift in Sources */,
 				E4D53BD128918D4C00A58159 /* AppDelegate.swift in Sources */,
 				E4D53BEA28918EC500A58159 /* CustomTableViewCell.swift in Sources */,

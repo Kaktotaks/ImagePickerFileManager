@@ -31,23 +31,19 @@ class LocalFileManager {
         
     }
     
-    
     func getImage(name: String) -> UIImage? {
-        
         guard
-                FileManager.default.fileExists(atPath: name)
-                
+            let path = getPathForImage(name: name)?.path,
+            FileManager.default.fileExists(atPath: path)
         else {
             print("Error getting path to an Image.")
             return nil
         }
         
-        return UIImage(contentsOfFile: name)
-        
+        return UIImage(contentsOfFile: path)
     }
     
     func getPathForImage(name: String) -> URL? {
-        
         guard
             let path = FileManager
                 .default
@@ -60,6 +56,5 @@ class LocalFileManager {
         }
         
         return path
-        
     }
 }

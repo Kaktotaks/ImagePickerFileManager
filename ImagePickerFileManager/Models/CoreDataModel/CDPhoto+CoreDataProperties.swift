@@ -16,9 +16,8 @@ extension CDPhoto {
         return NSFetchRequest<CDPhoto>(entityName: "CDPhoto")
     }
 
-    @NSManaged public var path: String?
     @NSManaged public var time: String?
-
+    @NSManaged public var imageName: UUID?
 }
 
 extension CDPhoto : Identifiable {
