@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 class LocalFileManager {
-    
+
     static let instance = LocalFileManager()
-    
+
     func saveImage(image: UIImage, name: String) {
         guard
             let data = image.jpegData(compressionQuality: 1) ?? image.pngData(),
@@ -28,9 +28,8 @@ class LocalFileManager {
         } catch let error {
             print("Error in saving data in LocalFile! \(error) ")
         }
-        
+
     }
-    
     func getImage(name: String) -> UIImage? {
         guard
             let path = getPathForImage(name: name)?.path,
@@ -39,10 +38,8 @@ class LocalFileManager {
             print("Error getting path to an Image.")
             return nil
         }
-        
         return UIImage(contentsOfFile: path)
     }
-    
     func getPathForImage(name: String) -> URL? {
         guard
             let path = FileManager
@@ -54,7 +51,6 @@ class LocalFileManager {
             print("Error getting path")
             return nil
         }
-        
         return path
     }
 }
